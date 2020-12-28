@@ -11,6 +11,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import DAO.AgenciaDAO;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Agencia;
+
 
 /**
  *
@@ -18,18 +29,38 @@ import javafx.scene.control.Label;
  */
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
-    private Label label;
+    private AgenciaDAO agenciaDao = new AgenciaDAO();
+    private List<Agencia> agencias;
+    private ListView<Agencia> vistaAgencias;
+    private ObservableList<Agencia> observableAgencia;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private TableView<Agencia> listaAgencias;
+    
+    @FXML
+    private TableColumn<Agencia,String> colRFC;
+
+    @FXML
+    private TableColumn<Agencia,String> colNombre;
+    
+    @FXML
+    private TableColumn<Agencia,String> colDireccion;
+ 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        agencias = agenciaDao.getAllAgencias();
+        
+        inicializarCeldas();
     }    
+    
+    @FXML
+    private void inicializarCeldas() {
+        colRFC.setCellValueFactory(new PropertyValueFactory<Agencia, String>("RFC"));
+        colNombre.setCellValueFactory(new PropertyValueFactory<Agencia, String>("nombre"));
+        colDireccion.setCellValueFactory(new PropertyValueFactory<Agencia, String>("direccion"));
+
+        listaAgencias.getItems().setAll(agencias);
+    }
     
 }

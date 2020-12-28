@@ -39,11 +39,10 @@ public class DB {
             String userName = confProperties.getProperty("username");
             String password = confProperties.getProperty("password");
             
-            connection = (Connection) DriverManager.getConnection(url+databaseName+userName+password);
+            connection = DriverManager.getConnection(url+databaseName,userName,password);
         
         } catch (IOException | SQLException ex) {
             java.util.logging.Logger.getLogger(DB.class.getName()).log(Level.SEVERE,null, ex);
-            ex.getMessage();
         }
     }
     

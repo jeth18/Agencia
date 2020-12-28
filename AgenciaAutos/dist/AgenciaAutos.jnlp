@@ -7,12 +7,18 @@
     <offline-allowed/>
   </information>
   <resources>
-    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AgenciaAutos.jar" size="2593" download="eager" />
+    <j2se version="1.6+" java-vm-args="--module-path "C:\Users\Usuario\Downloads\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml "  href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="AgenciaAutos.jar" size="10635" download="eager" />
+    <jar href="lib\javafx-swt.jar" size="36811" download="eager" />
+    <jar href="lib\javafx.base.jar" size="749889" download="eager" />
+    <jar href="lib\javafx.controls.jar" size="2511137" download="eager" />
+    <jar href="lib\javafx.fxml.jar" size="127395" download="eager" />
+    <jar href="lib\javafx.graphics.jar" size="4295861" download="eager" />
+    <jar href="lib\javafx.media.jar" size="270594" download="eager" />
+    <jar href="lib\javafx.swing.jar" size="119848" download="eager" />
+    <jar href="lib\javafx.web.jar" size="714741" download="eager" />
+    <jar href="lib\mysql-connector-java-8.0.22.jar" size="2389216" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="AgenciaAutos" >
-    <param name="requiredFXVersion" value="8.0+"/>
-  </applet-desc>
-  <jfx:javafx-desc  width="800" height="600" main-class="agenciaautos.AgenciaAutos"  name="AgenciaAutos" />
+  <jfx:javafx-desc  width="800" height="600" main-class="main.main"  name="AgenciaAutos" />
   <update check="always"/>
 </jnlp>

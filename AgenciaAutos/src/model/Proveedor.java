@@ -9,21 +9,21 @@ package model;
  *
  * @author User
  */
-public class Agencia {
-    private String RFC;
+public class Proveedor {
+    private int codigo;
     private String nombre;
     private String direccion;
-    
-    public Agencia() {
-        
+    private String telefono;
+
+    public Proveedor() {
     }
 
-    public String getRFC() {
-        return RFC;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setRFC(String RFC) {
-        this.RFC = RFC;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -40,6 +40,14 @@ public class Agencia {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
     
     
