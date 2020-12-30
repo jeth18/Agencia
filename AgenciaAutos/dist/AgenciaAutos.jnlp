@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" java-vm-args="--module-path "C:\Users\Usuario\Downloads\openjfx-11.0.2_windows-x64_bin-sdk\javafx-sdk-11.0.2\lib" --add-modules javafx.controls,javafx.fxml "  href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="AgenciaAutos.jar" size="10635" download="eager" />
+    <jar href="AgenciaAutos.jar" size="15214" download="eager" />
     <jar href="lib\javafx-swt.jar" size="36811" download="eager" />
     <jar href="lib\javafx.base.jar" size="749889" download="eager" />
     <jar href="lib\javafx.controls.jar" size="2511137" download="eager" />
