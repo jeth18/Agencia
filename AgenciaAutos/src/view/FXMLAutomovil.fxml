@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="798.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.FXMLAutomovilController">
+    <children>
+      <TextField fx:id="txtBuscar" layoutX="20.0" layoutY="48.0" prefHeight="25.0" prefWidth="307.0" />
+      <Button layoutX="341.0" layoutY="48.0" mnemonicParsing="false" onAction="#buscarPorNombre" text="Buscar" />
+      <Button layoutX="576.0" layoutY="48.0" mnemonicParsing="false" onAction="#refrescar" text="Refresch" />
+       
+      <TableView fx:id="listaAutomoviles" layoutX="20.0" layoutY="96.0" prefHeight="370.0" prefWidth="618.0">
+        <columns>
+            <TableColumn fx:id="colCodigo" prefWidth="137.0" text="Codigo" />
+            <TableColumn fx:id="colMarca" prefWidth="173.0" text="Marca" />
+            <TableColumn fx:id="colModelo" prefWidth="155.0" text="Modelo" />
+            <TableColumn fx:id="colFecha" prefWidth="75.0" text="Año" />
+            <TableColumn fx:id="colCosto" prefWidth="75.0" text="Costo" />
+            <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
+            <TableColumn fx:id="colMotor" prefWidth="75.0" text="Motor" />
+            <TableColumn fx:id="colAgenciaRFC" prefWidth="75.0" text="RFC-Agencia" />
+            <TableColumn fx:id="colProveedorCodigo" prefWidth="75.0" text="Proveedor-Cod" />
+        </columns>
+      </TableView>
+      <Button layoutX="653.0" layoutY="96.0" mnemonicParsing="false" onAction="#cargarPaginaAgregarAutomovil" prefHeight="37.0" prefWidth="124.0" text="Agregar" />
+      <Button layoutX="653.0" layoutY="155.0" mnemonicParsing="false" onAction="#cargarPaginaActualizarAutomovil" prefHeight="37.0" prefWidth="124.0" text="Actualizar" />
+      <Button layoutX="653.0" layoutY="214.0" mnemonicParsing="false" onAction="#eliminarAutomovilSeleccionado" prefHeight="37.0" prefWidth="124.0" text="Eliminar" />
+      <Button layoutX="653.0" layoutY="441.0" mnemonicParsing="false" onAction="#cargarPaginaPrincipal" prefHeight="25.0" prefWidth="124.0" text="Regresar" />
+   </children>
+</AnchorPane>

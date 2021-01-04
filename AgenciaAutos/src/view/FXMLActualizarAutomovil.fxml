@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLActualizarAutomovilController">
+     <children>
+      
+      <TextField fx:id="txtCodigo" layoutX="43.0" layoutY="88.0" prefHeight="18.0" prefWidth="109.0" />
+      <TextField fx:id="txtMarca" layoutX="44.0" layoutY="168.0" prefHeight="25.0" prefWidth="193.0" />
+      <TextField fx:id="txtModelo" layoutX="44.0" layoutY="246.0" prefHeight="25.0" prefWidth="193.0" />
+      <TextField fx:id="txtCosto" layoutX="44.0" layoutY="322.0" prefHeight="26.0" prefWidth="193.0" />
+      <TextField fx:id="txtTipo" layoutX="44.0" layoutY="392.0" prefHeight="26.0" prefWidth="193.0" />
+      <TextField fx:id="txtMotor" layoutX="321.0" layoutY="88.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="dpFecha" layoutX="321.0" layoutY="171.0" />
+      <ComboBox fx:id="cbAgencia" layoutX="321.0" layoutY="252.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbProveedor" layoutX="321.0" layoutY="329.0" prefWidth="150.0" />
+
+
+      <Label layoutX="44.0" layoutY="69.0" prefHeight="18.0" prefWidth="72.0" text="Codigo" />
+      <Label layoutX="44.0" layoutY="150.0" prefHeight="18.0" prefWidth="72.0" text="Marca" />
+      <Label layoutX="44.0" layoutY="228.0" prefHeight="18.0" prefWidth="72.0" text="Modelo" />
+      <Label layoutX="44.0" layoutY="304.0" text="Costo" />
+      <Label layoutX="44.0" layoutY="374.0" text="Tipo" />
+      
+      <Button layoutX="436.0" layoutY="439.0" mnemonicParsing="false" onAction="#actualizarAutomovil" text="Actualizar" />
+      <Button layoutX="44.0" layoutY="439.0" mnemonicParsing="false" onAction="#cargarPaginaAutomovil" text="Regresar" />
+      
+      <Label layoutX="321.0" layoutY="150.0" text="Fecha" />
+      <Label layoutX="323.0" layoutY="231.0" text="Agencia" />
+      <Label layoutX="323.0" layoutY="308.0" text="Proveedor" />
+      <Label layoutX="323.0" layoutY="67.0" prefHeight="18.0" prefWidth="72.0" text="Motor" />
+
+      
+   </children>
+</AnchorPane>

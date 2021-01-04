@@ -5,30 +5,29 @@
  */
 package DAO;
 
+import DB.DB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import model.Agencia;
-import DB.DB;
-import java.sql.SQLException;
+import model.Proveedor;
 
 /**
  *
  * @author JET
  */
-public class AgenciaDAO implements IAgenciaDAO{
-
-    private ArrayList<Agencia> listaAgencias;
-    private Agencia agencia;
+public class ProveedorDAO implements IProveedorDAO{
+    private ArrayList<Proveedor> listaProveedores;
+    private Proveedor proveedor;
     private String query;
     private Connection connection;
-    
+
     @Override
-    public List<Agencia> getAllAgencias() {
-        listaAgencias = new ArrayList<>();
-        query = "SELECT * FROM agencia";
+    public List<Proveedor> getAllProveedores() {
+        listaProveedores = new ArrayList<>();
+        query = "SELECT * FROM proveedor";
         connection = (Connection) DB.getDBConnection();
         
         try {
@@ -37,15 +36,15 @@ public class AgenciaDAO implements IAgenciaDAO{
             
             while (result.next()) {        
                 
-                agencia = new Agencia();
+                proveedor = new Proveedor();
                 
-                agencia.setRFC(result.getString("RFC"));
-                agencia.setNombre(result.getString("Nombre"));
-                agencia.setDireccion(result.getString("Direccion"));
-                agencia.setTelefono(result.getString("Telefono"));
-                agencia.setEstado(result.getString("Estado"));
+                proveedor.setCodigo(result.getInt("Codigo"));
+                proveedor.setNombre(result.getString("Nombre"));
+                proveedor.setDireccion(result.getString("Direccion"));
+                proveedor.setTelefono(result.getString("Telefono"));
+                proveedor.setCorreo(result.getString("Correo"));
                 
-                listaAgencias.add(agencia);
+                listaProveedores.add(proveedor);
             }
         } catch(SQLException ex){
             System.out.println("Error en: " + ex.getMessage());
@@ -53,23 +52,21 @@ public class AgenciaDAO implements IAgenciaDAO{
             DB.closeConnection();
         }
         
-        return listaAgencias;
+        return listaProveedores;
     }
 
     @Override
-    public void agregarAgencia(Agencia agencia) {
-        query = "insert into agencia value (?,?,?,?,?)";
+    public void agregarProveedor(Proveedor proveedor) {
+        query = "insert into proveedor value (?,?,?,?,?)";
         connection = (Connection) DB.getDBConnection();
-        System.out.println(agencia.toString());
-
         
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, agencia.getRFC());
-            statement.setString(2, agencia.getNombre());
-            statement.setString(3, agencia.getDireccion());
-            statement.setString(4, agencia.getTelefono());
-            statement.setString(5, agencia.getEstado());
+            statement.setInt(1, proveedor.getCodigo());
+            statement.setString(2, proveedor.getNombre());
+            statement.setString(3, proveedor.getDireccion());
+            statement.setString(4, proveedor.getTelefono());
+            statement.setString(5, proveedor.getCorreo());
             
             statement.execute();
         } catch (SQLException ex) {
@@ -80,12 +77,12 @@ public class AgenciaDAO implements IAgenciaDAO{
     }
 
     @Override
-    public void eliminarAgencia(String R) {
+    public void eliminarProveedor(int codigo) {
         connection = (Connection) DB.getDBConnection();
-        query = "DELETE FROM agencia WHERE RFC = ?";
+        query = "DELETE FROM proveedor WHERE Codigo = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,R);
+            statement.setInt(1,codigo);
             
             statement.executeUpdate();
         } catch (SQLException ex) {
@@ -96,17 +93,19 @@ public class AgenciaDAO implements IAgenciaDAO{
     }
 
     @Override
-    public void actualizarAgencia(Agencia agencia) {
+    public void actualizarProveedor(Proveedor proveedor) {
         connection = (Connection) DB.getDBConnection();
-        query = "UPDATE agencia SET Nombre = ?, Direccion = ?, Telefono = ?, Estado = ? WHERE RFC = ?";
+        query = "update proveedor set nombre = ?, direccion = ?, telefono = ?, correo = ? where codigo = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1,agencia.getNombre());
-            statement.setString(2,agencia.getDireccion());
-            statement.setString(3,agencia.getTelefono());
-            statement.setString(4,agencia.getEstado());
-            statement.setString(5,agencia.getRFC());
+            statement.setString(1,proveedor.getNombre());
+            statement.setString(2,proveedor.getDireccion());
+            statement.setString(3,proveedor.getTelefono());
+            statement.setString(4,proveedor.getCorreo());
 
+            statement.setInt(5, proveedor.getCodigo());
+            
+            System.out.println(statement);
 
             statement.executeUpdate();
         } catch (SQLException ex) {
@@ -115,28 +114,27 @@ public class AgenciaDAO implements IAgenciaDAO{
             DB.closeConnection();
         }
         
-        
     }
 
     @Override
-    public Agencia obtenerAgencia(String R) {
+    public Proveedor obtenerProveedor(int codigo) {
         connection = (Connection) DB.getDBConnection();
-        query = "SELECT * FROM agencia WHERE RFC = ?";
+        query = "SELECT * FROM proveedor WHERE Codigo = ?";
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, R);
+            statement.setInt(1, codigo);
             
             ResultSet result = statement.executeQuery();
             result.next();
             
-            agencia = new Agencia();
-            agencia.setRFC(result.getString("RFC"));
-            agencia.setNombre(result.getString("Nombre"));
-            agencia.setDireccion(result.getString("Direccion"));
-            agencia.setTelefono(result.getString("Telefono"));
-            agencia.setEstado(result.getString("Estado"));
-           
-            return agencia;
+            proveedor = new Proveedor();
+                
+                proveedor.setCodigo(result.getInt("Codigo"));
+                proveedor.setNombre(result.getString("Nombre"));
+                proveedor.setDireccion(result.getString("Direccion"));
+                proveedor.setTelefono(result.getString("Telefono"));
+                proveedor.setCorreo(result.getString("Correo"));
+        
             
         } catch(SQLException | NullPointerException ex) {
             System.out.println("Error en: " + ex.getMessage());
@@ -144,8 +142,8 @@ public class AgenciaDAO implements IAgenciaDAO{
             DB.closeConnection();
         }
        
-        return agencia;
-
+        return proveedor;
     }
-    
 }
+    
+

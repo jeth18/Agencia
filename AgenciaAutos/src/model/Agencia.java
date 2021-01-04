@@ -13,6 +13,8 @@ public class Agencia {
     private String RFC;
     private String nombre;
     private String direccion;
+    private String telefono;
+    private String estado;
     
     public Agencia() {
         
@@ -40,6 +42,28 @@ public class Agencia {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    
+    public String getTelefono() {
+        return telefono;
+    }
+    
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    
+    public String getEstado() {
+        return estado;
+    }
+    
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    @Override
+    public String toString() {
+        return "Agencia{" + "RFC=" + RFC + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", estado=" + estado + '}';
     }
     
     

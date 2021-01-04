@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.FXMLClienteController">
+    <children>
+      <TextField fx:id="txtBuscar" layoutX="20.0" layoutY="48.0" prefHeight="25.0" prefWidth="307.0" />
+      <Button layoutX="341.0" layoutY="48.0" mnemonicParsing="false" onAction="#buscarPorNombre" text="Buscar" />
+      <Button layoutX="576.0" layoutY="48.0" mnemonicParsing="false" onAction="#refrescar" text="Refresch" />
+       
+      <TableView fx:id="listaClientes" layoutX="20.0" layoutY="96.0" prefHeight="370.0" prefWidth="618.0">
+        <columns>
+            <TableColumn fx:id="colCodigo" prefWidth="137.0" text="Codigo" />
+            <TableColumn fx:id="colNombre" prefWidth="173.0" text="Nombre" />
+            <TableColumn fx:id="colApellido" prefWidth="155.0" text="Apellido" />
+            <TableColumn fx:id="colTelefono" prefWidth="75.0" text="Telefono" />
+            <TableColumn fx:id="colDireccion" prefWidth="75.0" text="Direccion" />
+            <TableColumn fx:id="colAgencia" prefWidth="75.0" text="Agencia" />
+        </columns>
+      </TableView>
+      <Button layoutX="653.0" layoutY="96.0" mnemonicParsing="false" onAction="#cargarPaginaAgregarCliente" prefHeight="37.0" prefWidth="124.0" text="Agregar" />
+      <Button layoutX="653.0" layoutY="155.0" mnemonicParsing="false" onAction="#cargarPaginaActualizarCliente" prefHeight="37.0" prefWidth="124.0" text="Actualizar" />
+      <Button layoutX="653.0" layoutY="214.0" mnemonicParsing="false" onAction="#eliminarClienteSeleccionado" prefHeight="37.0" prefWidth="124.0" text="Eliminar" />
+      <Button layoutX="653.0" layoutY="441.0" mnemonicParsing="false" onAction="#cargarPaginaPrincipal" prefHeight="25.0" prefWidth="124.0" text="Regresar" />
+   </children>
+</AnchorPane>

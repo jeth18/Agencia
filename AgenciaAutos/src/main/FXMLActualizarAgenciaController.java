@@ -9,14 +9,12 @@ import DAO.AgenciaDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Agencia;
@@ -26,12 +24,8 @@ import model.Agencia;
  *
  * @author JET
  */
-public class FXMLAgregarAgenciaController implements Initializable {
+public class FXMLActualizarAgenciaController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML 
     private TextField txtRFC;
     
@@ -47,16 +41,26 @@ public class FXMLAgregarAgenciaController implements Initializable {
     @FXML
     private TextField txtEstado;
     
-    private String RFC, nombre, direccion, telefono, estado;
-
+    private String RFC,nombre,direccion,estado,telefono;
     
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       txtRFC.setDisable(false);
     }    
+
+    public void asignarInfo(Agencia agencia) {
+        txtRFC.setText(agencia.getRFC());
+        txtNombre.setText(agencia.getNombre());
+        txtDireccion.setText(agencia.getDireccion());
+        txtEstado.setText(agencia.getEstado());
+        txtTelefono.setText(agencia.getTelefono());
+    }
     
     @FXML
-    public void agregarAgencia() {
+    public void actualizarAgencia() {
         Agencia agencia = new Agencia();
         AgenciaDAO agenciaDAO = new AgenciaDAO();
         
@@ -64,7 +68,7 @@ public class FXMLAgregarAgenciaController implements Initializable {
                 "".equals(txtDireccion.getText()) && "".equals(txtTelefono.getText())
                 && "".equals(txtEstado.getText()) ){
             
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Campos Incompletos");
             alert.setHeaderText("Campos Incomletos");
             alert.setContentText("Llene el formulario");
@@ -84,17 +88,17 @@ public class FXMLAgregarAgenciaController implements Initializable {
             agencia.setTelefono(telefono);
             agencia.setEstado(estado);
             
-            agenciaDAO.agregarAgencia(agencia);
+            agenciaDAO.actualizarAgencia(agencia);
             
-            Alert alert = new Alert(AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Correcto");
             alert.setHeaderText("Se agrego la agencia");
 
             alert.showAndWait();
             
             cargarPaginaAgencia();
-            
         }
+        
     }
     
     @FXML

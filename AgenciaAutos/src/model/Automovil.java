@@ -19,6 +19,8 @@ public class Automovil {
     private double costo;
     private String tipo;
     private String motor;
+    private String AgenciaRFC;
+    private int ProveedorCodigo;
 
     public Automovil() {
     }
@@ -78,6 +80,27 @@ public class Automovil {
 
     public void setMotor(String motor) {
         this.motor = motor;
+    }
+
+    public String getAgenciaRFC() {
+        return AgenciaRFC;
+    }
+
+    public void setAgenciaRFC(String AgenciaRFC) {
+        this.AgenciaRFC = AgenciaRFC;
+    }
+
+    public int getProveedorCodigo() {
+        return ProveedorCodigo;
+    }
+
+    public void setProveedorCodigo(int ProveedorCodigo) {
+        this.ProveedorCodigo = ProveedorCodigo;
+    }
+
+    @Override
+    public String toString() {
+        return "Automovil{" + "codigo=" + codigo + ", marca=" + marca + ", modelo=" + modelo + ", fecha=" + fecha + ", costo=" + costo + ", tipo=" + tipo + ", motor=" + motor + ", AgenciaRFC=" + AgenciaRFC + ", ProveedorCodigo=" + ProveedorCodigo + '}';
     }
     
     

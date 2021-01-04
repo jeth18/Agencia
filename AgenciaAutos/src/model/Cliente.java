@@ -15,6 +15,7 @@ public class Cliente {
     private String apellido;
     private String telefono;
     private String direccion;
+    private String agencia_RFC;
 
     public Cliente() {
     }
@@ -58,6 +59,13 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    
+
+    public String getAgencia_RFC() {
+        return agencia_RFC;
+    }
+
+    public void setAgencia_RFC(String agencia_RFC) {
+        this.agencia_RFC = agencia_RFC;
+    }
     
 }

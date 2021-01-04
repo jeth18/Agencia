@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.FXMLAgregarAgenciaController">
-   <children>
+<AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="535.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="main.FXMLActualizarAgenciaController">
+    <children>
       
-      <TextField fx:id="txtRFC" layoutX="44.0" layoutY="87.0" prefHeight="32.0" prefWidth="440.0" />
+      <TextField fx:id="txtRFC" editable="false" layoutX="44.0" layoutY="87.0" prefHeight="32.0" prefWidth="440.0" />
       <TextField fx:id="txtNombre" layoutX="44.0" layoutY="168.0" prefHeight="32.0" prefWidth="440.0" />
       <TextField fx:id="txtDireccion" layoutX="44.0" layoutY="246.0" prefHeight="32.0" prefWidth="440.0" />
       <TextField fx:id="txtTelefono" layoutX="44.0" layoutY="322.0" prefHeight="26.0" prefWidth="440.0" />
@@ -21,8 +21,8 @@
       <Label layoutX="44.0" layoutY="304.0" text="Telefono" />
       <Label layoutX="44.0" layoutY="374.0" text="Estado" />
       
-      <Button layoutX="421.0" layoutY="463.0" mnemonicParsing="false" onAction="#agregarAgencia" text="Agregar" />
-      <Button layoutX="43.0" layoutY="463.0" mnemonicParsing="false" text="Regresar"  onAction="#cargarPaginaAgencia" />
+      <Button layoutX="416.0" layoutY="463.0" mnemonicParsing="false" text="Actualizar" 
+      onAction="#actualizarAgencia" />
 
       
    </children>

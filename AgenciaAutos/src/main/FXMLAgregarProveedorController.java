@@ -6,34 +6,30 @@
 package main;
 
 import DAO.AgenciaDAO;
+import DAO.ProveedorDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Agencia;
+import model.Proveedor;
 
 /**
  * FXML Controller class
  *
  * @author JET
  */
-public class FXMLAgregarAgenciaController implements Initializable {
+public class FXMLAgregarProveedorController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML 
-    private TextField txtRFC;
+    private TextField txtCodigo;
     
     @FXML 
     private TextField txtNombre;
@@ -45,10 +41,10 @@ public class FXMLAgregarAgenciaController implements Initializable {
     private TextField txtTelefono;
     
     @FXML
-    private TextField txtEstado;
+    private TextField txtCorreo;
     
-    private String RFC, nombre, direccion, telefono, estado;
-
+    private String nombre, direccion, telefono, correo;
+    private int codigo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,55 +52,52 @@ public class FXMLAgregarAgenciaController implements Initializable {
     }    
     
     @FXML
-    public void agregarAgencia() {
-        Agencia agencia = new Agencia();
-        AgenciaDAO agenciaDAO = new AgenciaDAO();
+    public void agregarProveedor() {
+        Proveedor proveedor = new Proveedor();
+        ProveedorDAO proveedorDAO = new ProveedorDAO();
         
-        if("".equals(txtRFC.getText()) && "".equals(txtNombre.getText()) && 
+        if("".equals(txtCodigo.getText()) && "".equals(txtNombre.getText()) && 
                 "".equals(txtDireccion.getText()) && "".equals(txtTelefono.getText())
-                && "".equals(txtEstado.getText()) ){
+                && "".equals(txtCorreo.getText()) ){
             
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Campos Incompletos");
             alert.setHeaderText("Campos Incomletos");
             alert.setContentText("Llene el formulario");
 
             alert.showAndWait();
         } else {
-            RFC = txtRFC.getText();
+            codigo = Integer.parseInt(txtCodigo.getText());
             nombre = txtNombre.getText();
             direccion = txtDireccion.getText();
             telefono = txtTelefono.getText();
-            estado = txtEstado.getText();
-            System.out.println(RFC + " " + nombre + " " + direccion + " " + telefono + " " + estado);
+            correo = txtCorreo.getText();
             
-            agencia.setRFC(RFC);
-            agencia.setNombre(nombre);
-            agencia.setDireccion(direccion);
-            agencia.setTelefono(telefono);
-            agencia.setEstado(estado);
+            proveedor.setCodigo(codigo);
+            proveedor.setNombre(nombre);
+            proveedor.setDireccion(direccion);
+            proveedor.setTelefono(telefono);
+            proveedor.setCorreo(correo);
             
-            agenciaDAO.agregarAgencia(agencia);
+            proveedorDAO.agregarProveedor(proveedor);
             
-            Alert alert = new Alert(AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Correcto");
-            alert.setHeaderText("Se agrego la agencia");
+            alert.setHeaderText("Se agrego el proveedor");
 
             alert.showAndWait();
             
-            cargarPaginaAgencia();
+            cargarPaginaProveedor();
             
         }
     }
     
     @FXML
-    public void cargarPaginaAgencia() {
+    public void cargarPaginaProveedor() {
         Stage stage = new Stage();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLAgencia.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLProveedor.fxml"));
             Scene scene = new Scene(root);
-            
-            
             
             stage.setScene(scene);
             stage.show();
@@ -117,7 +110,7 @@ public class FXMLAgregarAgenciaController implements Initializable {
     
     @FXML
     private void closeButtonAction() {
-        Stage stage = (Stage) txtRFC.getScene().getWindow();
+        Stage stage = (Stage) txtCodigo.getScene().getWindow();
         stage.close();
     }
 }

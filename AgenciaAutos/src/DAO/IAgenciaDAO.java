@@ -17,4 +17,5 @@ public interface IAgenciaDAO {
     void agregarAgencia(Agencia agencia);
     void eliminarAgencia(String RFC);
     void actualizarAgencia(Agencia agencia);
+    Agencia obtenerAgencia(String RFC);
 }
